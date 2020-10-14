@@ -9,4 +9,6 @@ app.use(router.allowedMethods());
 
 console.info("Server running on port", 3000);
 
-await app.listen({ port: 3000 });
+app.listen({ port: 3000 });
+
+export default app;

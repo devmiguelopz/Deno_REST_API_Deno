@@ -9,6 +9,7 @@ let users: ListCollection = new ListCollection().add(
 );
 
 export const getUsers = ({ response }: { response: Response }) => {
+  response.body = {};
   Object.assign(
     response.body,
     serviceResponse.Get<ListCollection>("Successful Query", users)
@@ -22,6 +23,7 @@ export const getUser = ({
   params: { id: string };
   response: Response;
 }) => {
+  response.body = {};
   const userFound: User | undefined = users.getById(params.id);
   if (userFound) {
     Object.assign(
@@ -48,8 +50,8 @@ export const createUser = async ({
   request: Request;
   response: Response;
 }) => {
+  response.body = {};
   const body: Body = request.body();
-
   if (!request.hasBody) {
     Object.assign(
       response.body,
@@ -84,6 +86,7 @@ export const updateUser = async ({
   request: Request;
   response: Response;
 }) => {
+  response.body = {};
   const userFound: User | undefined = users.getById(params.id);
   if (!userFound) {
     Object.assign(
@@ -114,6 +117,7 @@ export const deleteUser = ({
   params: { id: string };
   response: Response;
 }) => {
+  response.body = {};
   users.delete(params.id);
   Object.assign(
     response.body,
